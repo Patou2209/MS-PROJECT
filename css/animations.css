@@ -1,0 +1,37 @@
+/* ==========================================================================
+   MS GROUP — animations.css
+   Animations fade-in (left / right / top / bottom) déclenchées au scroll
+   ========================================================================== */
+
+/* État initial : invisible + décalé */
+.fade-left   { opacity: 0; transform: translateX(-60px); }
+.fade-right  { opacity: 0; transform: translateX(60px);  }
+.fade-top    { opacity: 0; transform: translateY(-60px); }
+.fade-bottom { opacity: 0; transform: translateY(60px);  }
+
+.fade-left, .fade-right, .fade-top, .fade-bottom {
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  will-change: opacity, transform;
+}
+
+/* État final : visible, à sa place */
+.fade-left.visible, .fade-right.visible,
+.fade-top.visible, .fade-bottom.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Cascade : délais progressifs pour les cartes d'une même grille */
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.30s; }
+.delay-3 { transition-delay: 0.45s; }
+.delay-4 { transition-delay: 0.60s; }
+.delay-5 { transition-delay: 0.75s; }
+.delay-6 { transition-delay: 0.90s; }
+
+/* Accessibilité : respecter les préférences utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  .fade-left, .fade-right, .fade-top, .fade-bottom {
+    opacity: 1; transform: none; transition: none;
+  }
+}
