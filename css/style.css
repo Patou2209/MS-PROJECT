@@ -504,6 +504,8 @@ nav img{
 .stats-section {
   position: relative;
   padding: 80px 0;
+  width: 90%;
+  margin: 0 auto;
   
 }
 .stats-bg {
