@@ -3,49 +3,15 @@
    Header sticky, menu burger mobile, scroll fluide, lien actif au scroll
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.getElementById('site-header');
-  const burgerBtn = document.getElementById('burger-btn');
-  const mainNav = document.getElementById('main-nav');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const backToTopBtn = document.getElementById('back-to-top');
-
-  /* ---------- Overlay pour le menu mobile ---------- */
-  const overlay = document.createElement('div');
-  overlay.className = 'nav-overlay';
-  document.body.appendChild(overlay);
-
-  function openMenu() {
-    mainNav.classList.add('open');
-    burgerBtn.classList.add('open');
-    overlay.classList.add('show');
-    burgerBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    mainNav.classList.remove('open');
-    burgerBtn.classList.remove('open');
-    overlay.classList.remove('show');
-    burgerBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  burgerBtn.addEventListener('click', () => {
-    if (mainNav.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  overlay.addEventListener('click', closeMenu);
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      closeMenu();
-    });
-  });
+let menuBtn = document.getElementById('menu-btn');
+            let menuClose = document.getElementById('menu-close');
+            
+            menuBtn.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.add('active');
+            });
+            menuClose.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.remove('active');
+            });
 
   /* ---------- Header sticky (fond blanc au scroll) ---------- */
   function handleHeaderScroll() {
@@ -133,4 +99,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(nextSlide, 6000);
   }
-});
+
